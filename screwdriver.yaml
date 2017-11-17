@@ -1,0 +1,23 @@
+platform: nodejs_lib
+shared:
+  settings:
+    PUBLISH_CHECK: policy  
+  notifications:
+    email: "shung@oath.com"
+  steps:
+    update-version:
+      bump_method: skip
+  plugins:
+    # coverage:
+    #   type: lcov
+    #   parameters:
+    #     info_path: artifacts/coverage/lcov.info
+    #     report_path: artifacts/coverage/lcov-report
+    test_results:
+      enabled: false
+      type: junit
+      parameters:
+        path: artifacts/tests
+# jobs:
+#   component:
+    
