@@ -17,7 +17,8 @@ renderApp(MyComponent);
 
 // Webpack Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('my-react-library', () => {
+  module.hot.accept('my-react-library', (module) => {
+    console.log(module);
     renderApp(MyComponent);
   });
 }

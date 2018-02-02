@@ -99,6 +99,7 @@ const config = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor'),
+    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]
 };
