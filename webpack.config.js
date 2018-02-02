@@ -18,8 +18,12 @@ function buildEntries() {
 
     var isDraft = dir.charAt(0) === '_';
 
-    if (!isDraft && isDirectory(path.join(EXAMPLES_DIR, dir)))
-      entries[dir] = path.join(EXAMPLES_DIR, dir, 'app.jsx');
+    if (!isDraft && isDirectory(path.join(EXAMPLES_DIR, dir))) {
+      entries[dir] = [];
+      entries[dir].push('babel-polyfill');
+      entries[dir].push('react-hot-loader/patch');
+      entries[dir].push(path.join(EXAMPLES_DIR, dir, 'app.jsx'));
+    }
 
     return entries;
   }, {});
@@ -36,11 +40,12 @@ const config = {
     rules: [
       {
         test: /\.jsx?/,
-        use: ['react-hot/webpack','babel']
+        use: ['babel'],
+        exclude: [/node_modules/]
       },
       {
-        test: /\.(scss|css)$/,
-        use: ['style', 'css', 'sass']
+        test: /\.css$/,
+        use: ['style', 'css']
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,

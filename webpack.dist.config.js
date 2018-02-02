@@ -5,38 +5,33 @@ const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
 const env = process.env.NODE_ENV;
 
-var reactExternal = {
-  root: 'React'
-};
-var reactDOMExternal = {
-  root: 'ReactDOM'
-};
-
 const config = {
   entry: {
-    "my-react-library": [`${APP_DIR}/index.js`]
+    'my-react-library': [`${APP_DIR}/index.js`]
   },
 
-  externals: {
-    'react': reactExternal,
-    'react-dom': reactDOMExternal
-  },
+  externals: [
+    'react', 'react-dom', 'fbjs', 'prop-types', 'styled-components'
+  ],
 
   output: {
     path: BUILD_DIR,
     publicPath: '/',
-    filename: '[name].js'
+    filename: '[name].js',
+    library: 'my-react-library',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     rules: [
       {
         test: /\.jsx?/,
-        include: APP_DIR,
         use: ['babel'],
+        exclude: [/node_modules/]
       },
       {
-        test: /\.(scss|css)$/,
-        use: ['style', 'css', 'sass']
+        test: /\.css$/,
+        use: ['style', 'css']
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,

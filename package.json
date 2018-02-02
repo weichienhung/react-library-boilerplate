@@ -6,12 +6,13 @@
     "type": "git",
     "url": ""
   },
-  "author": "shung",
+  "author": "samuel hung",
   "license": "MIT",
   "keywords": [],
   "options": {
     "mocha": "--require scripts/mocha_runner src/**/__tests__/**/*.js"
   },
+  "module": "./dist/my-react-library.js",
   "scripts": {
     "prepublish": "npm run build",
     "lint": "eslint ./src",
@@ -51,16 +52,18 @@
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "styled-components": "^3.1.5",
     "react-hot-loader": "^3.1.3",
     "sinon": "^1.17.3",
-    "webpack": "^2.3.2",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
   },
   "peerDependencies": {
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "fbjs": "^0.8.16",
-    "prop-types": "^15.6.0"
+    "prop-types": "^15.6.0",
+    "styled-components": "^3.1.5"
   },
   "dependencies": {
     "babel-runtime": "^6.6.1"
